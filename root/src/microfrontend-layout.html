@@ -1,0 +1,27 @@
+<single-spa-router>
+  <div class="layout">
+    <header class="appbar">
+      <div class="brand">BuilderBid Single-SPA</div>
+    </header>
+    <div class="content">
+      <nav class="sidebar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/angular">Angular App</a></li>
+          <li><a href="/react">React App</a></li>
+        </ul>
+      </nav>
+      <main>
+        <route path="angular">
+          <application name="builderbid-angular"></application>
+        </route>
+        <route path="react">
+          <application name="builderbid-react"></application>
+        </route>
+        <route default>
+          <application name="@single-spa/welcome"></application>
+        </route>
+      </main>
+    </div>
+  </div>
+</single-spa-router>
