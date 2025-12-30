@@ -10,8 +10,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     { 
       provide: APP_BASE_HREF, 
-      // Updated to match the new route structure in the root config
-      useValue: (window as any).singleSpaNavigate ? '/app/inventory' : '/' 
+      useValue: '/' 
     }
   ]
 };

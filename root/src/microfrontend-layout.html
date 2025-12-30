@@ -8,21 +8,32 @@
 
     <main class="content-wrapper">
       <route path="app">
-        <route path="inventory">
+        <route path="templates">
           <application name="builderbid-angular"></application>
         </route>
-        <route path="projects">
-          <application name="builderbid-projects"></application>
+        
+        <route path="project/:projectId">
+          <route path="schedule">
+            <application name="builderbid-projects"></application>
+          </route>
+          <application name="builderbid-angular"></application>
         </route>
+
         <route path="crm">
           <application name="builderbid-crm"></application>
         </route>
+        
         <route path="insurance">
           <application name="builderbid-insurance"></application>
         </route>
+        
         <route path="management">
           <application name="builderbid-mgmt"></application>
         </route>
+      </route>
+
+      <route path="/" exact>
+        <application name="builderbid-projects"></application>
       </route>
 
       <route default>

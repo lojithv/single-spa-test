@@ -104,19 +104,38 @@ function App() {
         <nav className="sidebar">
           <ul>
             <li>
-              <a href="/" onClick={(e) => { e.preventDefault(); navigateTo('/'); }}>Home</a>
+              <a href="/" onClick={(e) => { e.preventDefault(); navigateTo('/'); }}>My Projects (React)</a>
+            </li>
+            
+            <li style={{ marginTop: '15px' }}>
+              <strong>Project Details (Angular)</strong>
             </li>
             <li>
-              <a href="/app/inventory" onClick={(e) => { e.preventDefault(); navigateTo('/app/inventory'); }}>Inventory (Angular)</a>
+              <a href="/app/project/123" onClick={(e) => { e.preventDefault(); navigateTo('/app/project/123'); }}>Project Home</a>
             </li>
             <li>
-              <a href="/app/projects" onClick={(e) => { e.preventDefault(); navigateTo('/app/projects'); }}>Projects (React)</a>
+              <a href="/app/project/123/schedule" onClick={(e) => { e.preventDefault(); navigateTo('/app/project/123/schedule'); }}>Project Schedule (React)</a>
             </li>
-            <li style={{ marginTop: '15px', borderTop: '1px solid #ccc', paddingTop: '10px' }}>
-              <strong>Services</strong>
+
+            <li style={{ marginTop: '15px' }}>
+              <strong>Templates (Angular)</strong>
             </li>
             <li>
-              <a href="/app/crm" onClick={(e) => { e.preventDefault(); navigateTo('/app/crm'); }}>CRM</a>
+              <a href="/app/templates" onClick={(e) => { e.preventDefault(); navigateTo('/app/templates'); }}>Templates List</a>
+            </li>
+
+            <li style={{ marginTop: '15px' }}>
+              <strong>CRM (React)</strong>
+            </li>
+            <li>
+              <a href="/app/crm" onClick={(e) => { e.preventDefault(); navigateTo('/app/crm'); }}>CRM Home</a>
+            </li>
+            <li>
+              <a href="/app/crm/companies" onClick={(e) => { e.preventDefault(); navigateTo('/app/crm/companies'); }}>Companies</a>
+            </li>
+
+            <li style={{ marginTop: '15px' }}>
+              <strong>Other</strong>
             </li>
             <li>
               <a href="/app/insurance" onClick={(e) => { e.preventDefault(); navigateTo('/app/insurance'); }}>Insurance</a>
