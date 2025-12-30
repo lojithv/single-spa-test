@@ -1,5 +1,8 @@
 <div style="padding: 20px; border: 2px solid #dd0031; border-radius: 8px;">
   <h1 style="color: #dd0031;">Angular Microfrontend</h1>
+  <div *ngIf="user" style="margin-bottom: 10px; color: #2ecc71;">
+    Currently logged in as: {{ user.name }}
+  </div>
   <p>This is the Angular application running within the single-spa shell.</p>
   <nav>
     <a routerLink="/">Local Home</a> | 

@@ -32,7 +32,20 @@
   </script>
 
   <% if (isLocal) { %>
-  <!-- React Refresh Preamble -->
+  <!-- React Refresh Preamble for all React/Vite apps -->
+  <script type="module">
+    // Ports for all our React/Vite apps
+    const ports = [5173, 5174, 5175, 5176, 5177];
+    ports.forEach(port => {
+      // Inject preamble for each port to support HMR across all apps
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = `http://localhost:${port}/@react-refresh`;
+      // This is a bit complex in a single index.ejs, but for dev we can just 
+      // load the main ones or use the manual approach for each.
+    });
+  </script>
+  
   <script type="module">
     import RefreshRuntime from 'http://localhost:5173/@react-refresh'
     RefreshRuntime.injectIntoGlobalHook(window)
@@ -40,13 +53,24 @@
     window.$RefreshSig$ = () => (type) => type
     window.__vite_plugin_react_preamble_installed__ = true
   </script>
+  <!-- Other apps also need their preambles if we want HMR everywhere -->
+  <script type="module">
+    import 'http://localhost:5174/@react-refresh'
+    import 'http://localhost:5175/@react-refresh'
+    import 'http://localhost:5176/@react-refresh'
+    import 'http://localhost:5177/@react-refresh'
+  </script>
 
   <script type="importmap">
     {
       "imports": {
         "@builderbid/root-config": "http://localhost:9000/builderbid-root-config.js",
         "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js",
-        "builderbid-react": "http://localhost:5173/src/main.tsx"
+        "builderbid-auth": "http://localhost:5173/src/main.tsx",
+        "builderbid-crm": "http://localhost:5174/src/main.tsx",
+        "builderbid-insurance": "http://localhost:5175/src/main.tsx",
+        "builderbid-mgmt": "http://localhost:5176/src/main.tsx",
+        "builderbid-projects": "http://localhost:5177/src/main.tsx"
       }
     }
   </script>
@@ -60,57 +84,17 @@
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    .layout {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
+    
+    /* Position the content area to leave space for the Auth Sidebar/Appbar */
+    .content-wrapper {
+      margin-top: 60px;
+      margin-left: 200px;
+      padding: 2rem;
+      min-height: calc(100vh - 60px);
     }
-    .appbar {
-      background-color: #20232a;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      height: 60px;
-    }
-    .brand {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .content {
-      display: flex;
-      flex: 1;
-    }
-    .sidebar {
-      width: 200px;
-      background-color: #f0f2f5;
-      border-right: 1px solid #ddd;
-      padding: 1rem;
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-    .sidebar li {
-      margin-bottom: 1rem;
-    }
-    .sidebar a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      display: block;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: background-color 0.2s;
-    }
-    .sidebar a:hover {
-      background-color: #e2e6ea;
-      color: #007bff;
-    }
-    main {
-      flex: 1;
-      padding: 1rem;
-      overflow-y: auto;
+
+    #single-spa-application\:builderbid-angular {
+      width: 100%;
     }
   </style>
 </head>

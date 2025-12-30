@@ -1,27 +1,33 @@
 <single-spa-router>
-  <div class="layout">
-    <header class="appbar">
-      <div class="brand">BuilderBid Single-SPA</div>
-    </header>
-    <div class="content">
-      <nav class="sidebar">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/angular">Angular App</a></li>
-          <li><a href="/react">React App</a></li>
-        </ul>
-      </nav>
-      <main>
-        <route path="angular">
+  <div class="main-container">
+    <!-- Auth App is now the dedicated shell (Sidebar/Appbar) -->
+    <application name="builderbid-auth"></application>
+
+    <route path="login"></route>
+    <route path="signup"></route>
+
+    <main class="content-wrapper">
+      <route path="app">
+        <route path="inventory">
           <application name="builderbid-angular"></application>
         </route>
-        <route path="react">
-          <application name="builderbid-react"></application>
+        <route path="projects">
+          <application name="builderbid-projects"></application>
         </route>
-        <route default>
-          <application name="@single-spa/welcome"></application>
+        <route path="crm">
+          <application name="builderbid-crm"></application>
         </route>
-      </main>
-    </div>
+        <route path="insurance">
+          <application name="builderbid-insurance"></application>
+        </route>
+        <route path="management">
+          <application name="builderbid-mgmt"></application>
+        </route>
+      </route>
+
+      <route default>
+        <application name="@single-spa/welcome"></application>
+      </route>
+    </main>
   </div>
 </single-spa-router>

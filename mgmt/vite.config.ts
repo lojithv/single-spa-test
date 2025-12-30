@@ -7,11 +7,11 @@ export default defineConfig({
   plugins: [
     react(),
     vitePluginSingleSpa({
-      serverPort: 5177,
+      serverPort: 5176,
       spaEntryPoints: 'src/main.tsx'
     })
   ],
   server: {
-    port: 5177
+    port: 5176
   }
 })

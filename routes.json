@@ -1,0 +1,94 @@
+{
+    "routes": [
+        {
+            "path": "/",
+            "component": "My Projects",
+            "app":"react"
+        },
+        {
+            "path": "/login",
+            "component": "Login",
+            "app":"auth"
+        },
+        {
+            "path": "/signup",
+            "component": "Signup",
+            "app":"auth"
+        },
+        {
+            "path": "/app/templates",
+            "component": "Templates",
+            "app":"angular"
+        },
+        {
+            "path": "/app/templates/:templateId",
+            "component": "Template Details",
+            "app":"angular"
+        },
+        {
+            "path": "/app/templates/:templateId/edit",
+            "component": "Edit Template",
+            "app":"angular"
+        },
+        {
+            "path": "/app/project/:projectId",
+            "component": "Project Home",
+            "app":"angular"
+        },
+        {
+            "path": "/app/project/:projectId/estimate",
+            "component": "Project Estimate",
+            "app":"angular"
+        },
+        {
+            "path": "/app/project/:projectId/specifications",
+            "component": "Project Specifications",
+            "app":"angular"
+        },
+        {
+            "path": "/app/project/:projectId/request-bids",
+            "component": "Project Request Bids",
+            "app":"angular"
+        },
+        {
+            "path": "/app/project/:projectId/schedule",
+            "component": "Project Schedule",
+            "app":"react"
+        },
+        {
+            "path": "/app/crm",
+            "component": "CRM",
+            "app":"crm"
+        },
+        {
+            "path": "/app/crm/companies",
+            "component": "Companies",
+            "app":"crm"
+        },
+        {
+            "path": "/app/crm/companies/:companyId",
+            "component": "Company Details",
+            "app":"crm"
+        },
+        {
+            "path": "/app/crm/companies/:companyId/chat",
+            "component": "Company Chat",
+            "app":"crm"
+        },
+        {
+            "path": "/app/crm/companies/:companyId/notes",
+            "component": "Company Notes",
+            "app":"crm"
+        },
+        {
+            "path": "/app/insurance",
+            "component": "Insurance",
+            "app":"insurance-tracking"
+        },
+        {
+            "path": "/app/management",
+            "component": "Management",
+            "app":"mgmt"
+        }
+    ]
+}

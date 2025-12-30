@@ -22,21 +22,12 @@ function App() {
   }, []);
 
   return (
-    <div className="projects-container">
-      <h1>Projects Microfrontend</h1>
+    <div style={{ padding: '20px', border: '2px solid #2196F3', borderRadius: '8px' }}>
+      <h1 style={{ color: '#2196F3' }}>Insurance Tracking Microfrontend</h1>
       {user && <div style={{ marginBottom: '10px', color: '#2ecc71' }}>Currently logged in as: {user.name}</div>}
-      <p>This application is now focused entirely on project management logic.</p>
+      <p>This is the Insurance Tracking application (Port 5175).</p>
       <div className="card">
-        <p>Current Project: <strong>Single-SPA Migration</strong></p>
-        <p>Status: In Progress</p>
-      </div>
-      <div style={{ marginTop: '20px', padding: '15px', background: '#f9f9f9', borderRadius: '8px' }}>
-        <h3>Project Tasks</h3>
-        <ul>
-          <li>Move shell to Auth app</li>
-          <li>Update import maps</li>
-          <li>Verify routing</li>
-        </ul>
+        <p>Monitor and manage insurance policies.</p>
       </div>
     </div>
   )

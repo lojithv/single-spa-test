@@ -1,0 +1,131 @@
+.auth-shell {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.appbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #20232a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #f0f2f5;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: #e2e6ea;
+  color: #61dafb;
+}
+
+/* Full screen auth pages */
+.full-page-auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* Above appbar and sidebar */
+}
+
+.auth-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-card h2 {
+  margin: 0 0 0.5rem 0;
+  color: #20232a;
+  text-align: center;
+}
+
+.auth-card input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.auth-card button {
+  padding: 0.8rem;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 6px;
+  color: #20232a;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.auth-card button:hover {
+  background-color: #4fa8c7;
+}
+
+.auth-card p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.auth-card a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
+}

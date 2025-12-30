@@ -22,21 +22,12 @@ function App() {
   }, []);
 
   return (
-    <div className="projects-container">
-      <h1>Projects Microfrontend</h1>
+    <div style={{ padding: '20px', border: '2px solid #4CAF50', borderRadius: '8px' }}>
+      <h1 style={{ color: '#4CAF50' }}>CRM Microfrontend</h1>
       {user && <div style={{ marginBottom: '10px', color: '#2ecc71' }}>Currently logged in as: {user.name}</div>}
-      <p>This application is now focused entirely on project management logic.</p>
+      <p>This is the CRM application (Port 5174).</p>
       <div className="card">
-        <p>Current Project: <strong>Single-SPA Migration</strong></p>
-        <p>Status: In Progress</p>
-      </div>
-      <div style={{ marginTop: '20px', padding: '15px', background: '#f9f9f9', borderRadius: '8px' }}>
-        <h3>Project Tasks</h3>
-        <ul>
-          <li>Move shell to Auth app</li>
-          <li>Update import maps</li>
-          <li>Verify routing</li>
-        </ul>
+        <p>Manage your customer relationships here.</p>
       </div>
     </div>
   )
