@@ -1,21 +1,20 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
-
-// Simple Auth Context
-const AuthContext = createContext<{
-  user: { name: string } | null;
-  login: () => void;
-  logout: () => void;
-}>({
-  user: null,
-  login: () => {},
-  logout: () => {}
-});
-
-export const useAuth = () => useContext(AuthContext);
+import { 
+  useSharedUser, 
+  useNotifications,
+  login as storeLogin, 
+  logout as storeLogout,
+  removeNotification,
+  type User 
+} from './shared/store'
+import { useTheme } from './shared/hooks'
 
 function App() {
-  const [user, setUser] = useState<{ name: string } | null>(null);
+  // Use the shared user state (this automatically subscribes to changes)
+  const user = useSharedUser();
+  const notifications = useNotifications();
+  const theme = useTheme();
   const [pathname, setPathname] = useState(window.location.pathname)
 
   useEffect(() => {
@@ -34,16 +33,20 @@ function App() {
     };
   }, []);
 
-  const login = () => {
-    const newUser = { name: 'John Doe' };
-    setUser(newUser);
-    window.dispatchEvent(new CustomEvent('builderbid:auth:login', { detail: { user: newUser } }));
+  const handleLogin = () => {
+    // Create a mock user (in real app, this would come from API)
+    const mockUser: User = { 
+      id: '1',
+      name: 'John Doe',
+      email: 'john@example.com',
+      roles: ['user', 'admin']
+    };
+    storeLogin(mockUser);
     navigateTo('/');
   };
   
-  const logout = () => {
-    setUser(null);
-    window.dispatchEvent(new CustomEvent('builderbid:auth:logout'));
+  const handleLogout = () => {
+    storeLogout();
     navigateTo('/login');
   };
 
@@ -63,7 +66,7 @@ function App() {
             <h2>Login</h2>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button onClick={login}>Login</button>
+            <button onClick={handleLogin}>Login</button>
             <p>Don't have an account? <a href="/signup" onClick={(e) => { e.preventDefault(); navigateTo('/signup'); }}>Sign up</a></p>
           </div>
         </div>
@@ -86,14 +89,28 @@ function App() {
     }
 
     return (
-      <div className="auth-shell">
+      <div className="auth-shell" data-theme={theme}>
+        {/* Notifications Toast Container */}
+        <div className="notifications-container">
+          {notifications.map(notification => (
+            <div 
+              key={notification.id} 
+              className={`notification notification-${notification.type}`}
+              onClick={() => removeNotification(notification.id)}
+            >
+              {notification.message}
+            </div>
+          ))}
+        </div>
+
         <header className="appbar">
           <div className="brand">BuilderBid Shell</div>
           <div className="user-profile">
             {user ? (
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span>Welcome, {user.name}</span>
-                <button onClick={logout}>Logout</button>
+                <span style={{ fontSize: '12px', color: '#888' }}>({user.email})</span>
+                <button onClick={handleLogout}>Logout</button>
               </div>
             ) : (
               <button onClick={() => navigateTo('/login')}>Login</button>
@@ -149,11 +166,7 @@ function App() {
     );
   };
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {renderContent()}
-    </AuthContext.Provider>
-  )
+  return renderContent();
 }
 
 export default App
