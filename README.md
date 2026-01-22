@@ -66,16 +66,59 @@ This monorepo contains multiple microfrontend applications orchestrated by singl
 - Yarn or npm
 - Angular CLI (for the Angular application)
 
-### Installation
+### Quick Start (Recommended)
 
-Install dependencies for each application:
+The easiest way to run the entire stack:
+
+```bash
+# Install all dependencies (first time only)
+npm run install:all
+
+# Start all applications
+npm start
+```
+
+This will start all 7 applications with color-coded output:
+- **root** (cyan) - Port 9000
+- **common** (magenta) - Port 5173
+- **angular** (red) - Port 4200
+- **crm** (green) - Port 5174
+- **insurance** (yellow) - Port 5175
+- **mgmt** (blue) - Port 5176
+- **projects** (white) - Port 5177
+
+Then open http://localhost:9000 in your browser.
+
+### Minimal Development Setup
+
+If you only need the shell and root:
+
+```bash
+npm run start:minimal
+```
+
+### Start Individual Apps
+
+```bash
+npm run start:root       # Root orchestrator (port 9000)
+npm run start:common     # Common/Auth shell (port 5173)
+npm run start:angular    # Angular app (port 4200)
+npm run start:crm        # CRM app (port 5174)
+npm run start:insurance  # Insurance app (port 5175)
+npm run start:mgmt       # Management app (port 5176)
+npm run start:projects   # Projects app (port 5177)
+```
+
+### Manual Installation
+
+Install dependencies for each application individually:
 
 ```bash
 # Root orchestrator
 cd root && yarn install
 
-# Auth shell
-cd auth && yarn install
+# Common shell (formerly auth)
+cd common && yarn install
 
 # Angular app
 cd angular && npm install

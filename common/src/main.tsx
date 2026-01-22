@@ -7,37 +7,8 @@ import './index.css';
 // ============================================================
 // SHARED EXPORTS - Other microfrontends import from 'builderbid-auth'
 // ============================================================
-
-// Export the store and all its functions
-export {
-  // Stores (for direct access)
-  userStore,
-  notificationsStore,
-  themeStore,
-  // Actions
-  login,
-  logout,
-  addNotification,
-  removeNotification,
-  toggleTheme,
-  // Utilities
-  isAuthenticated,
-  getToken,
-  setToken,
-  clearToken,
-  // Types
-  type User,
-  type AppNotification,
-} from './shared/store';
-
-// Export React hooks for easy consumption
-export {
-  useSharedUser,
-  useNotifications,
-  useTheme,
-  useIsAuthenticated,
-  useStore,
-} from './shared/hooks';
+// Re-export everything from the shared index (keeps this DRY)
+export * from './shared/index';
 
 // ============================================================
 // SINGLE-SPA LIFECYCLE

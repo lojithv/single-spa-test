@@ -1,0 +1,26 @@
+{
+  "name": "builderbid-microfrontends",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BuilderBid Microfrontend Architecture - Root workspace",
+  "scripts": {
+    "start": "concurrently -n root,common,angular,crm,insurance,mgmt,projects -c cyan,magenta,red,green,yellow,blue,white \"npm:start:root\" \"npm:start:common\" \"npm:start:angular\" \"npm:start:crm\" \"npm:start:insurance\" \"npm:start:mgmt\" \"npm:start:projects\"",
+    "start:root": "cd root && yarn start",
+    "start:common": "cd common && yarn dev",
+    "start:angular": "cd angular && npm run serve:single-spa:builderbid-angular",
+    "start:crm": "cd crm && yarn dev",
+    "start:insurance": "cd insurance-tracking && yarn dev",
+    "start:mgmt": "cd mgmt && yarn dev",
+    "start:projects": "cd react && yarn dev",
+    "start:minimal": "concurrently -n root,common -c cyan,magenta \"npm:start:root\" \"npm:start:common\"",
+    "install:all": "npm install && cd root && yarn install && cd ../common && yarn install && cd ../angular && npm install && cd ../crm && yarn install && cd ../insurance-tracking && yarn install && cd ../mgmt && yarn install && cd ../react && yarn install",
+    "build:all": "cd root && yarn build && cd ../common && yarn build && cd ../angular && npm run build:single-spa:builderbid-angular && cd ../crm && yarn build && cd ../insurance-tracking && yarn build && cd ../mgmt && yarn build && cd ../react && yarn build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

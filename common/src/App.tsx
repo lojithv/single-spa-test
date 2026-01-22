@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { 
-  useSharedUser, 
-  useNotifications,
   login as storeLogin, 
   logout as storeLogout,
   removeNotification,
   type User 
 } from './shared/store'
-import { useTheme } from './shared/hooks'
+import { useSharedUser, useNotifications, useTheme } from './shared/hooks'
 
 function App() {
   // Use the shared user state (this automatically subscribes to changes)
